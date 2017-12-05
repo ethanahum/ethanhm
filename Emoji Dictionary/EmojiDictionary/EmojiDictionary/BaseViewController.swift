@@ -2,7 +2,7 @@
 //  BaseViewController.swift
 //  CaseStudy
 //
-//  Created by Eric Shorr on 22/11/2017.
+//  Created by Administrateur on 22/11/2017.
 //  Copyright © 2017 Developer Institute. All rights reserved.
 //
 
