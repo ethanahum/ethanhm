@@ -57,5 +57,34 @@ class ViewController: BaseViewController {
         
         return true
     }
+    @objc func keyboardWasShown(_ notificiation: NSNotification)
+    {
+        struct keyboard
+        {
+            static var userInfo : [AnyHashable : Any]?
+        }
+        
+        if( keyboard.userInfo == nil )
+        {
+            keyboard.userInfo = notificiation.userInfo
+        }
+        
+        if let keyboardFrameValue : NSValue =  keyboard.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue
+        {
+            let keyboardFrame = keyboardFrameValue.cgRectValue
+            let keyboardSize = keyboardFrame.size
+            
+            
+            let contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
+            self.scrollView.contentInset = contentInsets
+            self.scrollView.scrollIndicatorInsets = contentInsets
+        }
+    }
+    
+    @objc func keyboardWillBeHidden(_ notification: NSNotification) {
+        let contentInsets = UIEdgeInsets.zero
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+    }
 }
 
